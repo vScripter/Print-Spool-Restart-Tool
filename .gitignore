@@ -2,3 +2,4 @@
 *.temppoint.*
 *.psproj.psbuild
 *.psbuild
+*.run.ps1
