@@ -2772,39 +2772,28 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</Binary>
   </Object>
   <Code><![CDATA[
 $OnLoadFormEvent = {
-	#TODO: Initialize Form Controls here
-	
+	#TODO: Initialize Form Controls here	
 }
 
-
-
-
-
 $buttonRestartPrintSpooler_Click = {
-	[void][reflection.assembly]::Load("System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089")
 	
-	$captionSuccess = @"
-The Print Spooler service was restarted successfully
-"@
-	$captionFail = @"
-Errors encounterd trying to restart the Print Spooler service. Please try rebooting your PC.
-
-"@
+	$captionSuccess = 'The Print Spooler service was restarted successfully'
+	$captionFail = 'Errors encounterd trying to restart the Print Spooler service. Please try rebooting your PC.'
 	
 	try {
 		Restart-Service -Name spooler -Verbose -ErrorAction 'Stop'
 		[void][System.Windows.Forms.MessageBox]::Show("$captionSuccess", "Restart Print Spooler")
 	} catch {
 		[void][System.Windows.Forms.MessageBox]::Show("$captionFail", "Restart Print Spooler")
-	}
+	} # end try/catch
 	
-}
+} # end $buttonRestartPrintSpooler_Click
 
-$buttonExit_Click={
-$formSpoolManager.Close()
+$buttonExit_Click = {
 	
-}
-]]></Code>
+	$formSpoolManager.Close()
+	
+} # end $buttonExit_Click]]></Code>
   <Mode>1</Mode>
   <Assemblies>
     <Assembly>System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35</Assembly>
