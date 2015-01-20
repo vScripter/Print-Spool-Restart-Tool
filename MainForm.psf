@@ -2778,7 +2778,7 @@ $OnLoadFormEvent = {
 $buttonRestartPrintSpooler_Click = {
 	
 	try {		
-		Restart-Service -Name spoolers -Verbose -ErrorAction 'Stop'
+		Restart-Service -Name spooler -Verbose -ErrorAction 'Stop'
 		
 		[void][System.Windows.Forms.MessageBox]::Show('The Print Spooler service was restarted successfully', "Restart Print Spooler")
 		
