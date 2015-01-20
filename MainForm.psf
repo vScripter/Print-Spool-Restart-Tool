@@ -2772,19 +2772,22 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</Binary>
   </Object>
   <Code><![CDATA[
 $OnLoadFormEvent = {
-	#TODO: Initialize Form Controls here	
-}
+	# do stuff when the form loads
+} # end $OnLoadFormEvent
 
 $buttonRestartPrintSpooler_Click = {
 	
-	$captionSuccess = 'The Print Spooler service was restarted successfully'
-	$captionFail = 'Errors encounterd trying to restart the Print Spooler service. Please try rebooting your PC.'
-	
-	try {
-		Restart-Service -Name spooler -Verbose -ErrorAction 'Stop'
-		[void][System.Windows.Forms.MessageBox]::Show("$captionSuccess", "Restart Print Spooler")
+	try {		
+		Restart-Service -Name spoolers -Verbose -ErrorAction 'Stop'
+		
+		[void][System.Windows.Forms.MessageBox]::Show('The Print Spooler service was restarted successfully', "Restart Print Spooler")
+		
 	} catch {
-		[void][System.Windows.Forms.MessageBox]::Show("$captionFail", "Restart Print Spooler")
+		
+		[void][System.Windows.Forms.MessageBox]::Show("Errors encounterd trying to restart the Print Spooler service. Please try rebooting your PC.
+
+Error Message:   $_", "Restart Print Spooler")
+		
 	} # end try/catch
 	
 } # end $buttonRestartPrintSpooler_Click
